@@ -18,3 +18,5 @@ spec:
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts
+
+# ReplicaSet - It is mainly used to achieve realiability, load-balancing and scalability
