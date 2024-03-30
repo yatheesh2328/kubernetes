@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jenkins-replicaset
+  labels: # label is used to group the multiple replicas
+    app: my-jenkins
+spec:
+  replicas: 2 # how many pods i need to create
+  selector: # it is used to hold the pods together
+    matchLabels:
+      app: allpods # all the pods will be mapped to this label
+  template: # which pod template we need to use
+    metadata:
+      name: jenkins-pod
+      labels:
+        app: allpods
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts
