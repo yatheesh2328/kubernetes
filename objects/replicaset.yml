@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: jenkins-replicaset
-  labels: # label is used to group the multiple replicas
+  labels:
     app: my-jenkins
 spec:
-  replicas: 2 # how many pods i need to create
-  selector: # it is used to hold the pods together
+  replicas: 2 
+  selector: 
     matchLabels:
-      app: allpods # all the pods will be mapped to this label
-  template: # which pod template we need to use
+      app: allpods 
+  template: 
     metadata:
       name: jenkins-pod
       labels:
@@ -20,3 +20,8 @@ spec:
           image: jenkins/jenkins:lts
 
 # ReplicaSet - It is mainly used to achieve realiability, load-balancing and scalability
+# label is used to group the multiple replicas
+# replicas - how many pods i need to create
+# selector: # it is used to hold the pods together
+# all the pods will be mapped to this label
+# template: # which pod template we need to use
