@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-jenkins
+  name: nginx
   labels:
-    app: jenkins
+    app: web-server
 spec:
   replicas: 2
   strategy:
@@ -13,17 +13,18 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: jenkins
+      app: nginx-group
   template:
     metadata:
       labels:
-        app: jenkins
+        app: nginx-group
     spec:
       containers:
-        - name: jenkins
-          image: jenkins/jenkins:2.303.1
+      - name: nginx-new
+        image: nginx
       nodeSelector:
-        name: worker
+        name: chosenone
+
 
 # Need to label the node and use that labelled node in nodeselector
 # To label node
