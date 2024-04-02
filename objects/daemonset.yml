@@ -1,18 +1,22 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: my-jenkins
+  name: my-daemonset
   labels:
-    app: jenkins
+    app: prometheus-daemonset
 spec:
   selector:
     matchLabels:
-      app: jenkins
+      app: monitor
   template:
     metadata:
       labels:
-        app: jenkins
+        app: monitor
     spec:
       containers:
-        - name: jenkins
-          image: jenkins/jenkins:lts
+        - name: prometheus
+          image: prom/prometheus
+
+
+# Daemon-set is basically used to deploy the pod on each node. It is used while monitoring the cluster.
+# also known as monitoring stack
