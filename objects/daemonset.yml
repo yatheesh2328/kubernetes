@@ -7,11 +7,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: monitor
+      type: monitoring-service
   template:
     metadata:
       labels:
-        app: monitor
+        type: monitoring-service
     spec:
       containers:
         - name: prometheus
@@ -20,3 +20,4 @@ spec:
 
 # Daemon-set is basically used to deploy the pod on each node. It is used while monitoring the cluster.
 # also known as monitoring stack
+# we will not give replicas in daemonset
