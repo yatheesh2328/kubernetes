@@ -6,8 +6,8 @@ spec:
   containers:
     - name: jenkins
       image: jenkins/jenkins:lts
-      ports:
-        - containerPort: 8081
+      # ports:
+      #   - containerPort: 8081
     - name: tomcat
       image: tomcat:9.0
       # ports:
