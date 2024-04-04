@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: web-server
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: nginx-group
+  template:
+    metadata:
+      labels:
+        app: nginx-group
+    spec:
+      containers:
+      - name: nginx-new
+        image: nginx
+      tolerations:
+        - key: "env"
+          operator: "Equal"
+          value: "prod"
+          effect: "NoSchedule"  
+
+
+#taint : reserving the node for special purposes
+# if we need to deploy the pod on tainted node then we need to use tolerations
+# even though if we provide tolerations it wnt deploy on tainted node. it only deployed on tainted node when other nodes are not
