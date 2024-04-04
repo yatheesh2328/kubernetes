@@ -31,4 +31,4 @@ spec:
 
 #taint : reserving the node for special purposes
 # if we need to deploy the pod on tainted node then we need to use tolerations
-# even though if we provide tolerations it wnt deploy on tainted node. it only deployed on tainted node when other nodes are not
+# even though if we provide tolerations it wnt deploy on tainted node. it only deployed on tainted node when other nodes are not available

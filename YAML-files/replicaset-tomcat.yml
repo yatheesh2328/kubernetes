@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: new-replicaset
+  labels:
+    app: tomcat
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat-pods
+  template:
+    metadata:
+      name: pod-template
+      labels:
+        app: tomcat-pods
+    spec:
+      containers:
+        - name: tomcat-container
+          image: tomcat:9.0
