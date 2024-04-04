@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-jen-deployment
+  labels:  
+    app: jenkins-access
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: jen-server
+  template:
+    metadata:
+      labels:
+        type: jen-server  # Labels for the Pods created by the Deployment
+    spec:
+      securityContext:
+        fsGroup: 1000 
+        runAsUser: 0
+      containers:
+        - name: jenkins-cont
+          image: jenkins/jenkins:lts
+          volumeMounts:
+            - name: jenkins-backup
+              mountPath: /var/jenkins_home
+      volumes:
+        - name: jenkins-backup
+          persistentVolumeClaim:
+            claimName: pvc-ebs
