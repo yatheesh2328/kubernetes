@@ -17,3 +17,10 @@ spec:
       containers:
         - name: jenkins-cont
           image: jenkins/jenkins:lts
+          volumeMounts:
+            - name: jenkins-backup
+              mountPath: /var/jenkins_home
+      volumes:
+        - name: jenkins-backup
+          persistentVolumeClaim:
+            claimName: pvc-ebs
