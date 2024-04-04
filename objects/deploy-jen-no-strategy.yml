@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-jen-deployment
-  labels: # providing labels for services
-    app: jenkins-access 
+  labels:  
+    app: jenkins-access
 spec:
   replicas: 2
   selector:
@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        type: jen-server
+        type: jen-server  # Labels for the Pods created by the Deployment
     spec:
       containers:
         - name: jenkins-cont
