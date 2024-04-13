@@ -3,7 +3,7 @@ kind: Deployment # used to achieve high availaibility with zero downtime
 metadata:
   name: jenkins-deployment
   labels:
-    app: jenkins-label
+    app: jenkins-server
 spec:
   replicas: 2
   strategy:
